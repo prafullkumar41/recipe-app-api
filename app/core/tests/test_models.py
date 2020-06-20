@@ -13,20 +13,20 @@ class ModelTests(TestCase):
 
         )
 
-        self.assertEqual(user.email,email)
+        self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
     def test_user_email_is_normalize(self):
 
         email = 'test@DEV.COM'
-        user = get_user_model().objects.create_user(email,'test123')
+        user = get_user_model().objects.create_user(email, 'test123')
 
-        self.assertEqual(user.email,email.lower())
+        self.assertEqual(user.email, email.lower())
 
     def test_email_field_not_empty(self):
         '''Raises Error if email is not provided'''
         with self.assertRaises(ValueError):
-            get_user_model().objects.create_user(None,'test123')
+            get_user_model().objects.create_user(None, 'test123')
 
 
     def test_create_super_user(self):
